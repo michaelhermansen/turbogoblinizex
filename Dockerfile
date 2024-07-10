@@ -12,7 +12,7 @@ RUN cd /temp/dev && bun install --frozen-lockfile
 
 # install with --production (exclude devDependencies)
 RUN mkdir -p /temp/prod
-COPY package.json bun.lockb /temp/prod/
+COPY package.json bun.lockb public/ /temp/prod/
 RUN cd /temp/prod && bun install --frozen-lockfile --production
 
 # copy node_modules from temp directory
@@ -30,6 +30,9 @@ FROM base AS release
 COPY --from=install /temp/prod/node_modules node_modules
 COPY --from=prerelease /usr/src/app/dist/index.js .
 COPY --from=prerelease /usr/src/app/package.json .
+
+RUN mkdir public/
+COPY --from=prerelease /usr/src/app/public public/
 
 # run the app
 USER bun

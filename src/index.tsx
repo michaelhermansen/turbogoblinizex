@@ -1,7 +1,10 @@
 import { Hono } from "hono";
 import Home from "./templates/Home";
+import { serveStatic } from "hono/bun";
 
 const app = new Hono();
+
+app.use("/*", serveStatic({ root: "./public" }));
 
 app.get("/", (c) => {
   return c.html(<Home />);

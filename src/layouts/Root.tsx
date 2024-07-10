@@ -11,7 +11,7 @@ export default function Layout({ children }: { children: Child }) {
         ></script>
         <script src="https://cdn.tailwindcss.com"></script>
       </head>
-      <body class="bg-green-500">{children}</body>
+      <body class="bg-lime-500">{children}</body>
     </html>
   );
 }

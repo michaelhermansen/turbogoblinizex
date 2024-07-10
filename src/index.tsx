@@ -8,8 +8,8 @@ app.get("/", (c) => {
 });
 
 app.post("/clicked", (c) => {
-  console.log("clicked");
-  return c.text("clicked goblin");
+  console.log("click the goblin");
+  return c.text("you clicked goblin!! :==0");
 });
 
 export default app;
